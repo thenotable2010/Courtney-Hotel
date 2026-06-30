@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courteney Hotel – Harare</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#2a9d8f;--teal-dark:#1f7a6e;--teal-light:#e8f5f3;--beige:#f5f0e8;--beige-dark:#e8dfc8;--white:#fff;--text:#2c2c2c;--text-light:#6b6b6b;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--beige-dark);display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;animation:slideDown .8s ease;}
+@keyframes slideDown{from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--teal-dark);letter-spacing:2px;}
+.logo span{color:var(--teal);font-weight:300;}
+nav ul{list-style:none;display:flex;gap:2.5rem;}
+nav ul li a{text-decoration:none;color:var(--text);font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:color .3s;}
+nav ul li a:hover{color:var(--teal);}
+.nav-btn{background:var(--teal);color:#fff;padding:.6rem 1.5rem;border:none;border-radius:2px;font-family:'Jost',sans-serif;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background .3s,transform .2s;}
+.nav-btn:hover{background:var(--teal-dark);transform:translateY(-1px);}
+.hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80') center/cover no-repeat;transform:scale(1.05);animation:zoomOut 8s ease forwards;}
+@keyframes zoomOut{from{transform:scale(1.12);}to{transform:scale(1);}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(42,157,143,.55) 0%,rgba(0,0,0,.45) 100%);}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:2rem;}
+.hero-tag{display:inline-block;border:1px solid rgba(255,255,255,.6);padding:.4rem 1.2rem;border-radius:30px;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeUp 1s ease .3s both;background:rgba(255,255,255,.1);backdrop-filter:blur(4px);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:300;line-height:1.1;margin-bottom:1rem;animation:fadeUp 1s ease .5s both;}
+.hero h1 em{font-style:italic;color:#a8e6df;}
+.hero p{font-size:1.1rem;font-weight:300;letter-spacing:1px;margin-bottom:2.5rem;opacity:.9;animation:fadeUp 1s ease .7s both;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s ease .9s both;}
+.btn-primary{background:var(--teal);color:#fff;padding:1rem 2.5rem;border:none;border-radius:2px;font-family:'Jost',sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block;}
+.btn-primary:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(42,157,143,.4);}
+.btn-outline{background:transparent;color:#fff;padding:1rem 2.5rem;border:1px solid rgba(255,255,255,.7);border-radius:2px;font-family:'Jost',sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block;}
+.btn-outline:hover{background:rgba(255,255,255,.15);transform:translateY(-2px);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.hero-stats{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);display:flex;gap:1rem;z-index:2;animation:fadeUp 1s ease 1.2s both;}
+.stat-card{background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:1rem 1.8rem;border-radius:4px;color:#fff;text-align:center;}
+.stat-card .num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;}
+.stat-card .lbl{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;opacity:.8;}
+section{padding:6rem 3rem;}
+.section-tag{display:inline-block;color:var(--teal);font-size:.75rem;letter-spacing:3px;text-transform:uppercase;border-bottom:1px solid var(--teal);padding-bottom:4px;margin-bottom:1rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.2;margin-bottom:1.5rem;color:var(--text);}
+.section-sub{color:var(--text-light);font-size:1rem;line-height:1.8;max-width:560px;}
+.about{background:var(--beige);}
+.about-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.about-img-wrap{position:relative;}
+.about-img{width:100%;height:520px;object-fit:cover;border-radius:4px;box-shadow:20px 20px 0 var(--beige-dark);transition:transform .5s;display:block;}
+.about-img:hover{transform:scale(1.02);}
+.about-badge{position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--teal);color:#fff;padding:1.5rem;border-radius:4px;text-align:center;box-shadow:0 10px 30px rgba(42,157,143,.3);}
+.about-badge .big{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;display:block;}
+.about-badge .sm{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;opacity:.9;}
+.about-info{padding-left:1rem;}
+.features-list{list-style:none;margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.features-list li{display:flex;align-items:center;gap:.6rem;font-size:.9rem;color:var(--text-light);}
+.features-list li::before{content:'✦';color:var(--teal);font-size:.7rem;}
+.rooms{background:var(--white);}
+.rooms-header{max-width:1200px;margin:0 auto 3rem;}
+.rooms-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.room-card{border-radius:4px;overflow:hidden;border:1px solid var(--beige-dark);transition:transform .3s,box-shadow .3s;background:#fff;}
+.room-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.1);}
+.room-card img{width:100%;height:260px;object-fit:cover;display:block;transition:transform .5s;}
+.room-card:hover img{transform:scale(1.05);}
+.room-card-body{padding:1.5rem;}
+.room-type{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem;}
+.room-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin-bottom:.5rem;}
+.room-desc{font-size:.88rem;color:var(--text-light);line-height:1.6;}
+.room-card-footer{padding:1rem 1.5rem;border-top:1px solid var(--beige-dark);display:flex;justify-content:space-between;align-items:center;}
+.room-amenities{display:flex;gap:.8rem;}
+.amenity{font-size:1rem;}
+.book-room{background:var(--teal);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:2px;font-family:'Jost',sans-serif;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:background .3s;}
+.book-room:hover{background:var(--teal-dark);}
+.gallery{background:var(--beige);padding:6rem 3rem;}
+.gallery-header{max-width:1200px;margin:0 auto 3rem;}
+.gallery-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:220px 220px;gap:1rem;}
+.gallery-item{overflow:hidden;border-radius:4px;cursor:pointer;position:relative;}
+.gallery-item:first-child{grid-column:span 2;grid-row:span 2;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s;display:block;}
+.gallery-item:hover img{transform:scale(1.08);}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(42,157,143,.3),transparent);opacity:0;transition:opacity .3s;}
+.gallery-item:hover::after{opacity:1;}
+.amenities-section{background:var(--white);}
+.amenities-grid{max-width:1200px;margin:3rem auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.amenity-card{text-align:center;padding:2.5rem 1.5rem;border:1px solid var(--beige-dark);border-radius:4px;transition:all .3s;}
+.amenity-card:hover{border-color:var(--teal);background:var(--teal-light);transform:translateY(-5px);}
+.amenity-icon{font-size:2.5rem;margin-bottom:1rem;display:block;}
+.amenity-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin-bottom:.5rem;}
+.amenity-desc{font-size:.85rem;color:var(--text-light);line-height:1.6;}
+.reviews{background:var(--teal);padding:6rem 3rem;color:#fff;}
+.reviews-header{max-width:1200px;margin:0 auto 3rem;}
+.reviews-header .section-tag{color:#a8e6df;border-color:#a8e6df;}
+.reviews-header .section-title{color:#fff;}
+.reviews-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.review-card{background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);padding:2rem;border-radius:4px;transition:transform .3s,background .3s;}
+.review-card:hover{transform:translateY(-5px);background:rgba(255,255,255,.18);}
+.review-stars{color:#ffd166;font-size:1rem;margin-bottom:1rem;letter-spacing:2px;}
+.review-text{font-size:.95rem;line-height:1.8;opacity:.95;font-style:italic;margin-bottom:1.5rem;}
+.reviewer{display:flex;align-items:center;gap:.8rem;}
+.reviewer-avatar{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;}
+.reviewer-name{font-weight:500;font-size:.9rem;}
+.reviewer-date{font-size:.78rem;opacity:.7;}
+.location{background:var(--beige);}
+.location-grid{max-width:1200px;margin:3rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem;}
+.contact-item{display:flex;gap:1rem;align-items:flex-start;}
+.contact-icon{width:44px;height:44px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;flex-shrink:0;}
+.contact-label{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem;}
+.contact-value{font-size:1rem;color:var(--text);font-weight:400;}
+.map-placeholder{background:var(--beige-dark);border-radius:4px;height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed var(--teal);color:var(--teal);gap:1rem;text-align:center;}
+.map-placeholder .map-icon{font-size:3rem;}
+.map-placeholder p{font-size:.9rem;color:var(--text-light);max-width:260px;line-height:1.6;}
+.map-placeholder a{display:inline-block;margin-top:.5rem;background:var(--teal);color:#fff;text-decoration:none;padding:.6rem 1.5rem;border-radius:2px;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;transition:background .3s;}
+.map-placeholder a:hover{background:var(--teal-dark);}
+.cta-banner{background:linear-gradient(135deg,var(--teal-dark) 0%,var(--teal) 100%);padding:5rem 3rem;text-align:center;color:#fff;position:relative;overflow:hidden;}
+.cta-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(255,255,255,.08) 0%,transparent 60%);}
+.cta-banner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;margin-bottom:1rem;}
+.cta-banner p{opacity:.85;margin-bottom:2rem;font-size:1rem;}
+.cta-banner .btn-white{background:#fff;color:var(--teal-dark);padding:1rem 3rem;border:none;border-radius:2px;font-family:'Jost',sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block;font-weight:500;}
+.cta-banner .btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.2);}
+footer{background:#1a2e2c;color:rgba(255,255,255,.7);padding:3rem;text-align:center;}
+footer .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:#fff;margin-bottom:1rem;letter-spacing:2px;}
+footer p{font-size:.85rem;line-height:1.8;}
+footer .footer-links{display:flex;gap:2rem;justify-content:center;margin:1.5rem 0;}
+footer .footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;transition:color .3s;}
+footer .footer-links a:hover{color:var(--teal);}
+footer .footer-copy{font-size:.78rem;opacity:.5;margin-top:1rem;}
+.fade-in{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.particle{position:absolute;width:4px;height:4px;background:rgba(255,255,255,.4);border-radius:50%;animation:float linear infinite;}
+@keyframes float{0%{transform:translateY(100vh) rotate(0deg);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-100px) rotate(360deg);opacity:0;}}
+@media (max-width:768px){
+nav ul{display:none;}
+nav{padding:1rem 1.5rem;}
+section{padding:4rem 1.5rem;}
+.about-grid,.location-grid{grid-template-columns:1fr;gap:2rem;}
+.rooms-grid{grid-template-columns:1fr;}
+.amenities-grid{grid-template-columns:repeat(2,1fr);}
+.reviews-grid{grid-template-columns:1fr;}
+.gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto;}
+.gallery-item:first-child{grid-column:span 2;grid-row:span 1;}
+.hero-stats{display:none;}
+.about-badge{display:none;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">Courteney <span>Hotel</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Now</button>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="particles" id="particles"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">⭐ 3 Star Hotel · Harare, Zimbabwe</div>
+    <h1>Where <em>Elegance</em><br>Meets Heritage</h1>
+    <p>8th Street, Selous Ave, Harare · Exceptional Service · Unforgettable Hospitality</p>
+    <div class="hero-btns">
+      <a href="#rooms" class="btn-primary">Explore Rooms</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card"><div class="num">3★</div><div class="lbl">Star Rating</div></div>
+    <div class="stat-card"><div class="num">100%</div><div class="lbl">Guest Satisfaction</div></div>
+    <div class="stat-card"><div class="num">24/7</div><div class="lbl">Service</div></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap fade-in">
+      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80" alt="Courteney Hotel Lobby" class="about-img">
+      <div class="about-badge"><span class="big">3★</span><span class="sm">Rated Hotel</span></div>
+    </div>
+    <div class="about-info fade-in">
+      <span class="section-tag">About Us</span>
+      <h2 class="section-title">A Unique &amp; Private Retreat in the Heart of Harare</h2>
+      <p class="section-sub">Nestled in the vibrant neighbourhood of Harare, Courteney Hotel offers an unparalleled blend of comfort, elegance, and warm Zimbabwean hospitality. Our guests return time and again for our exceptional service, relaxing rooms, and unforgettable atmosphere — more than a stay, it's an experience.</p>
+      <ul class="features-list">
+        <li>Lush Garden &amp; Pool</li>
+        <li>Thatched Gazebos</li>
+        <li>Elegant Rooms</li>
+        <li>Warm Hospitality</li>
+        <li>Central Location</li>
+        <li>Unique &amp; Private</li>
+        <li>Grateful Staff</li>
+        <li>24/7 Service</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="rooms" id="rooms">
+  <div class="rooms-header fade-in">
+    <span class="section-tag">Accommodations</span>
+    <h2 class="section-title">Our Rooms &amp; Suites</h2>
+  </div>
+  <div class="rooms-grid">
+    <div class="room-card fade-in">
+      <img src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=700&q=80" alt="Luxury Suite">
+      <div class="room-card-body">
+        <div class="room-type">Suite</div>
+        <div class="room-name">Luxury Suite</div>
+        <p class="room-desc">A stunning modern suite featuring marble floors, a plush velvet sofa, and a tufted king bed — wrapped in a serene white and gold palette.</p>
+      </div>
+      <div class="room-card-footer">
+        <div class="room-amenities"><span class="amenity">🛏️</span><span class="amenity">🚿</span><span class="amenity">🛋️</span></div>
+        <button class="book-room">Book</button>
+      </div>
+    </div>
+    <div class="room-card fade-in">
+      <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=700&q=80" alt="Classic Room">
+      <div class="room-card-body">
+        <div class="room-type">Standard</div>
+        <div class="room-name">Classic Room</div>
+        <p class="room-desc">Warm and inviting with rich gold-toned drapes, a tufted leather headboard, and classic wooden furnishings for a truly relaxing stay.</p>
+      </div>
+      <div class="room-card-footer">
+        <div class="room-amenities"><span class="amenity">🛏️</span><span class="amenity">🚿</span><span class="amenity">🪑</span></div>
+        <button class="book-room">Book</button>
+      </div>
+    </div>
+    <div class="room-card fade-in">
+      <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=700&q=80" alt="Deluxe Room">
+      <div class="room-card-body">
+        <div class="room-type">Deluxe</div>
+        <div class="room-name">Deluxe Room</div>
+        <p class="room-desc">Spacious and characterful with decorative arched details, ornate drapery, and warm carpeting — a perfect blend of comfort and heritage.</p>
+      </div>
+      <div class="room-card-footer">
+        <div class="room-amenities"><span class="amenity">🛏️</span><span class="amenity">🚿</span><span class="amenity">💼</span></div>
+        <button class="book-room">Book</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="gallery-header fade-in">
+    <span class="section-tag">Gallery</span>
+    <h2 class="section-title">A Glimpse of Courteney</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80" alt="Pool and Gardens"></div>
+    <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=500&q=80" alt="Garden View"></div>
+    <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1530841344095-90657e2eddf4?w=500&q=80" alt="Garden Path"></div>
+    <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&q=80" alt="Lobby Lounge"></div>
+    <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=500&q=80" alt="Modern Suite"></div>
+  </div>
+</section>
+
+<section class="amenities-section" id="amenities">
+  <div style="max-width:1200px;margin:0 auto;" class="fade-in">
+    <span class="section-tag">Facilities</span>
+    <h2 class="section-title">Everything You Need</h2>
+  </div>
+  <div class="amenities-grid">
+    <div class="amenity-card fade-in"><span class="amenity-icon">🏊</span><div class="amenity-name">Swimming Pool</div><p class="amenity-desc">Relax by our beautiful outdoor pool surrounded by lush gardens and thatched gazebos.</p></div>
+    <div class="amenity-card fade-in"><span class="amenity-icon">🌿</span><div class="amenity-name">Lush Gardens</div><p class="amenity-desc">Stroll through our beautifully maintained gardens with African sculptures and tranquil water features.</p></div>
+    <div class="amenity-card fade-in"><span class="amenity-icon">🍽️</span><div class="amenity-name">Dining</div><p class="amenity-desc">Enjoy delicious meals prepared with care by our dedicated kitchen team in a warm, welcoming setting.</p></div>
+    <div class="amenity-card fade-in"><span class="amenity-icon">📶</span><div class="amenity-name">Free Wi-Fi</div><p class="amenity-desc">Stay connected throughout your stay with complimentary high-speed internet access.</p></div>
+    <div class="amenity-card fade-in"><span class="amenity-icon">🛡️</span><div class="amenity-name">24/7 Security</div><p class="amenity-desc">Your safety is our priority with round-the-clock security in a private, secure environment.</p></div>
+    <div class="amenity-card fade-in"><span class="amenity-icon">🅿️</span><div class="amenity-name">Parking</div><p class="amenity-desc">Ample on-site parking available for all guests throughout their stay.</p></div>
+    <div class="amenity-card fade-in"><span class="amenity-icon">☕</span><div class="amenity-name">Lounge Bar</div><p class="amenity-desc">Unwind in our charming lounge with fine drinks, comfortable seating, and a relaxed ambiance.</p></div>
+    <div class="amenity-card fade-in"><span class="amenity-icon">🧹</span><div class="amenity-name">Housekeeping</div><p class="amenity-desc">Daily housekeeping service ensures your room is always fresh and immaculate.</p></div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="reviews-header fade-in">
+    <span class="section-tag">Guest Reviews</span>
+    <h2 class="section-title">What Our Guests Say</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade-in">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The place is unique and private. I loved the service from grateful workers — truly a gem in Harare."</p>
+      <div class="reviewer"><div class="reviewer-avatar">B</div><div><div class="reviewer-name">Bothwell Muchemwa</div><div class="reviewer-date">2 years ago · Google Maps</div></div></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Your perfect getaway: exceptional service, relaxing rooms, unforgettable hospitality. More than a stay, it's an experience!"</p>
+      <div class="reviewer"><div class="reviewer-avatar">N</div><div><div class="reviewer-name">Ngoni Chitepo</div><div class="reviewer-date">9 months ago · Google Maps</div></div></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="review-stars">★★★★☆</div>
+      <p class="review-text">"A wonderful stay in the heart of Harare. The gardens and pool area are beautifully maintained and incredibly peaceful."</p>
+      <div class="reviewer"><div class="reviewer-avatar">T</div><div><div class="reviewer-name">Tendai Robson Chiwara</div><div class="reviewer-date">2 years ago · Google Maps</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="contact">
+  <div style="max-width:1200px;margin:0 auto 3rem;" class="fade-in">
+    <span class="section-tag">Find Us</span>
+    <h2 class="section-title">Location &amp; Contact</h2>
+  </div>
+  <div class="location-grid">
+    <div class="contact-info fade-in">
+      <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Address</div><div class="contact-value">8th Street, Selous Ave<br>Harare, Zimbabwe</div></div></div>
+      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-label">Phone</div><div class="contact-value">077 707 3824</div></div></div>
+      <div class="contact-item"><div class="contact-icon">🏨</div><div><div class="contact-label">Category</div><div class="contact-value">3 Star Hotel · Harare CBD</div></div></div>
+      <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-label">Check-in / Check-out</div><div class="contact-value">Check-in: 2:00 PM · Check-out: 11:00 AM</div></div></div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-label">Nearby Landmarks</div><div class="contact-value">Near Herbert Chitepo Ave, Fife Ave &amp; Livingstone Ave</div></div></div>
+    </div>
+    <div class="fade-in">
+      <div class="map-placeholder">
+        <div class="map-icon">🗺️</div>
+        <strong style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#2c2c2c;">Courteney Hotel</strong>
+        <p>8th Street &amp; Selous Ave, Harare<br>Near Herbert Chitepo Ave &amp; Fife Ave</p>
+        <a href="https://maps.google.com/?q=Courteney+Hotel+8th+Street+Selous+Ave+Harare" target="_blank">Open in Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-banner">
+  <h2>Ready for an Unforgettable Stay?</h2>
+  <p>Call us now and let us make your Harare visit truly special.</p>
+  <a href="tel:0777073824" class="btn-white">📞 Call 077 707 3824</a>
+</div>
+
+<footer>
+  <div class="footer-logo">Courteney Hotel</div>
+  <div class="footer-links">
+    <a href="#about">About</a><a href="#rooms">Rooms</a><a href="#gallery">Gallery</a><a href="#amenities">Amenities</a><a href="#contact">Contact</a>
+  </div>
+  <p>8th Street, Selous Ave, Harare, Zimbabwe &nbsp;|&nbsp; 077 707 3824</p>
+  <p class="footer-copy">© 2026 Courteney Hotel. All rights reserved.</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+const container = document.getElementById('particles');
+for (let i = 0; i < 18; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random() * 100 + '%';
+  p.style.animationDuration = (6 + Math.random() * 10) + 's';
+  p.style.animationDelay = (Math.random() * 8) + 's';
+  p.style.width = p.style.height = (2 + Math.random() * 5) + 'px';
+  container.appendChild(p);
+}
+
+document.querySelectorAll('.room-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    card.style.transform = `perspective(800px) rotateY(${x * 10}deg) rotateX(${-y * 8}deg) translateY(-8px)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+});
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.boxShadow = window.scrollY > 50 ? '0 4px 20px rgba(0,0,0,0.08)' : 'none';
+});
+</script>
+</body>
+</html>
